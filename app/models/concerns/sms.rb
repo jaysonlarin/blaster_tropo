@@ -1,8 +1,8 @@
 class Sms
-  include Constant
-
   # Class Methods
   class << self
+    include Constant
+
     def send(params)
       message = params[:message] rescue ""
       mobtel = params[:mobile_number] rescue ""
@@ -12,10 +12,10 @@ class Sms
 
       json = sms_json(mobtel, message)
 
-      response = HTTParty.post(sms_params, body: json)
+      response = HTTParty.post(send_message_url, body: json)
     end
 
-    def sms_json
+    def sms_json(mobtel, message)
       {
         'address' => mobtel,
         'deliveryNotification' => 'true',
@@ -24,9 +24,9 @@ class Sms
       }
     end
 
-    def sms_url
+    def send_message_url
       params = "app_id=#{app_id}&app_secret=#{app_secret}"
-      sms_params = "#{sms_url}/#{short_code}/requests?#{params}"
+      "#{sms_url}/#{short_code}/requests?#{params}"
     end
   end
   # Class Methods
