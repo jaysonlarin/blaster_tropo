@@ -1,0 +1,15 @@
+%h1 Tropo Sms Blaster
+
+= form_tag home_sms_path do
+  %table.table
+    %tr
+      %td
+        = label_tag("Enter Mobile Number:")
+        = text_field_tag :mobile_number, nil, required: true
+    %tr
+      %td
+        = label_tag("Enter Message Here:")
+        = text_area_tag :message, nil, required: true
+    %tr
+      %td
+        = submit_tag "Send SMS", class: 'btn btn-primary'

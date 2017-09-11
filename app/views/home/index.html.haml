@@ -1,0 +1,30 @@
+.col-lg-12
+  .col-lg-4
+  .col-lg-4.paddingTop150
+    .container-fluid
+      .row-fluid
+        .span8.well
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-target" => "#home",
+                 "data-toggle" => "tab",
+                 :href => "#home"}
+                Home
+            %li
+              %a{"data-target" => "#call",
+                 "data-toggle" => "tab",
+                 :href => "#profile"}
+                Call
+            %li
+              %a{"data-target" => "#sms",
+                 "data-toggle" => "tab",
+                 :href => "#profile"}
+                Sms
+          .tab-content
+            #home.tab-pane.active.fade.in
+              = markdown({}, tropo_intro)
+            #call.tab-pane
+              = render 'call'
+            #sms.tab-pane
+              = render 'sms'
+  .col-lg-4

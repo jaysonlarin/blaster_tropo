@@ -1,0 +1,15 @@
+%h1 Tropo Call Blaster
+
+= form_tag home_blast_path do
+  %table.table
+    %tr
+      %td
+        = label_tag("Enter Mobile Number:")
+        = text_field_tag :phone_number, nil, required: true
+    %tr
+      %td
+        = label_tag("Enter Message Here:")
+        = text_area_tag :message, nil, required: true
+    %tr
+      %td
+        = submit_tag "Call", class: 'btn btn-primary'
